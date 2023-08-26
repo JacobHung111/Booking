@@ -11,6 +11,8 @@ import '../../pages/user/profile_page.dart';
 class TabBarPage extends StatelessWidget {
   TabBarPage({super.key});
 
+  static const String path = '/home';
+
   static const List<Widget> _tabbarPages = [
     OrderPendingPage(),
     OrderActivePage(),

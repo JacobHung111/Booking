@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class OrderCreatePage extends StatelessWidget {
   const OrderCreatePage({super.key});
-  static String path = "/createOrder";
+  static const String path = "/createOrder";
 
   @override
   Widget build(BuildContext context) {

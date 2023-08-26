@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
-  static String path = "/changeProfile";
+  static const String path = "/changeProfile";
 
   @override
   Widget build(BuildContext context) {
