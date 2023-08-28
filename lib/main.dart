@@ -1,8 +1,8 @@
-import 'package:booking/controllers/common/loading_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'controllers/common/tabbar_controller.dart';
+import 'controllers/user/signin_controller.dart';
 import 'pages/commons/loading_page.dart';
 import 'pages/commons/splash_page.dart';
 import 'pages/commons/tabbar_page.dart';
@@ -20,7 +20,10 @@ Widget mainApp() {
     GetPage(
         name: SignInPage.path,
         page: () => const SignInPage(),
-        transition: Transition.downToUp,
+        binding: BindingsBuilder(() {
+          Get.lazyPut(() => SignInController());
+        }),
+        transition: Transition.noTransition,
         fullscreenDialog: true),
     GetPage(
         name: TabBarPage.path,
@@ -46,9 +49,6 @@ Widget mainApp() {
     brightness: Brightness.light,
     primarySwatch: Colors.teal,
   );
-
-  Future.delayed(
-      const Duration(seconds: 10), () => LoadingController.to.isLoading(0));
 
   return GetMaterialApp(
     theme: theme,

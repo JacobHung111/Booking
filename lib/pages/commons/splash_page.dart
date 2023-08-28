@@ -12,7 +12,7 @@ class SplashPage extends StatelessWidget {
 
   Future<Object> futureCall() async {
     //TODO: Startup API call
-    return Future<bool>.delayed(const Duration(seconds: 1), () => true)
+    return Future<bool>.delayed(const Duration(seconds: 1), () => false)
         .then((value) => {
               if (value)
                 {Get.offAllNamed(TabBarPage.path)}

@@ -8,7 +8,7 @@ import '../order/orders_pending_page.dart';
 import '../order/order_create_page.dart';
 import '../user/profile_page.dart';
 
-class TabBarPage extends StatelessWidget {
+class TabBarPage extends GetView<TabbarController> {
   TabBarPage({super.key});
 
   static const String path = '/';
@@ -51,18 +51,17 @@ class TabBarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tc = TabbarController.to;
     return Scaffold(
         appBar: AppBar(
           actions: _topbarActions,
         ),
         bottomNavigationBar: Obx(() => BottomNavigationBar(
               items: _tabbarItems,
-              currentIndex: tc.currentIndex.value,
-              onTap: (value) => tc.currentIndex(value),
+              currentIndex: controller.currentIndex.value,
+              onTap: (value) => controller.currentIndex(value),
             )),
         body: Obx(() => IndexedStack(
-              index: tc.currentIndex(),
+              index: controller.currentIndex(),
               children: _tabbarPages,
             )));
   }
