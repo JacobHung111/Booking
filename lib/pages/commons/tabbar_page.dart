@@ -1,17 +1,17 @@
-import 'package:booking/commons/tabbar/tabbar_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../pages/order/orders_active_page.dart';
-import '../../pages/order/orders_history_page.dart';
-import '../../pages/order/orders_pending_page.dart';
-import '../../pages/order/order_create_page.dart';
-import '../../pages/user/profile_page.dart';
+import '../../controllers/common/tabbar_controller.dart';
+import '../order/orders_active_page.dart';
+import '../order/orders_history_page.dart';
+import '../order/orders_pending_page.dart';
+import '../order/order_create_page.dart';
+import '../user/profile_page.dart';
 
 class TabBarPage extends StatelessWidget {
   TabBarPage({super.key});
 
-  static const String path = '/home';
+  static const String path = '/';
 
   static const List<Widget> _tabbarPages = [
     OrderPendingPage(),

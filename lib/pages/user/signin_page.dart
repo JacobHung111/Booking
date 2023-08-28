@@ -1,6 +1,6 @@
-import 'package:booking/commons/tabbar/tabbar_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../commons/tabbar_page.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
