@@ -4,48 +4,47 @@ import 'package:get/get.dart';
 class TextBox extends StatelessWidget {
   TextBox(
       {super.key,
-      required this.title,
+      this.title,
       this.inputType = TextInputType.text,
       this.hideButton = false,
       required this.onChanged,
-      this.isDark = false}) {
-    _boxColor = isDark ? Colors.white : Colors.black;
-  }
+      this.hintText,
+      this.isEnable = true,
+      this.limit});
 
-  final String title;
+  final String? title;
   final TextInputType inputType;
   final bool hideButton;
   final RxString onChanged;
-  final bool isDark;
-
-  late final Color _boxColor;
+  final String? hintText;
+  final bool isEnable;
+  final int? limit;
 
   final isHidden = false.obs;
 
   @override
   Widget build(BuildContext context) {
     return Obx(() => TextField(
-        style: TextStyle(color: _boxColor),
+        maxLength: limit,
+        enabled: isEnable,
         textInputAction: TextInputAction.done,
         obscureText: isHidden.value,
         keyboardType: inputType,
         decoration: InputDecoration(
-            focusedBorder:
-                UnderlineInputBorder(borderSide: BorderSide(color: _boxColor)),
-            enabledBorder:
-                UnderlineInputBorder(borderSide: BorderSide(color: _boxColor)),
-            suffixIcon: hideButton
-                ? IconButton(
-                    onPressed: () {
-                      isHidden(!isHidden.value);
-                    },
-                    icon: Icon(
-                      isHidden.value ? Icons.hide_source : Icons.remove_red_eye,
-                      color: _boxColor,
-                    ))
-                : null,
-            labelText: title,
-            labelStyle: TextStyle(color: _boxColor)),
+          hintText: hintText,
+          focusedBorder: const UnderlineInputBorder(),
+          enabledBorder: const UnderlineInputBorder(),
+          suffixIcon: hideButton
+              ? IconButton(
+                  onPressed: () {
+                    isHidden(!isHidden.value);
+                  },
+                  icon: Icon(
+                    isHidden.value ? Icons.hide_source : Icons.remove_red_eye,
+                  ))
+              : null,
+          labelText: title,
+        ),
         onChanged: onChanged));
   }
 }

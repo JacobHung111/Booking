@@ -33,7 +33,6 @@ class SplashPage extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      backgroundColor: Colors.teal.shade400,
       showLoader: true,
       loadingText: const Text("Loading..."),
       futureNavigator: futureCall(),

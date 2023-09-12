@@ -1,17 +1,26 @@
 import 'package:booking/controllers/common/loading_controller.dart';
 import 'package:booking/pages/commons/tabbar_page.dart';
+import 'package:booking/pages/user/forget_password_page.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SignInController {
   var email = "".obs;
   var password = "".obs;
 
-  var signInOnClicked = () {
+  signInOnClicked() {
     //TODO: API Called
+    FocusManager.instance.primaryFocus?.unfocus();
     LoadingController.to.isLoading++;
     Future.delayed(const Duration(seconds: 3), () {
       LoadingController.to.isLoading--;
       Get.offAllNamed(TabBarPage.path);
     });
-  };
+  }
+
+  forgetPassOnClicked() {
+    Get.toNamed(ForgetPasswordPage.path);
+  }
+
+  registerOnClicked() {}
 }

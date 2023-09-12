@@ -1,3 +1,5 @@
+import 'package:booking/controllers/user/forget_password_controller.dart';
+import 'package:booking/pages/user/forget_password_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -43,12 +45,27 @@ Widget mainApp() {
         page: () => const ProfilePage(),
         transition: Transition.downToUp,
         fullscreenDialog: true),
+    GetPage(
+        name: ForgetPasswordPage.path,
+        page: () => const ForgetPasswordPage(),
+        binding: BindingsBuilder(() {
+          Get.lazyPut(() => ForgetPasswordController());
+        }))
   ];
 
   var theme = ThemeData(
-    brightness: Brightness.light,
-    primarySwatch: Colors.teal,
-  );
+      colorScheme: const ColorScheme(
+          brightness: Brightness.light,
+          primary: Colors.red,
+          onPrimary: Colors.green,
+          secondary: Colors.blue,
+          onSecondary: Colors.yellow,
+          error: Colors.orange,
+          onError: Colors.teal,
+          background: Colors.lime,
+          onBackground: Colors.purple,
+          surface: Colors.blueGrey,
+          onSurface: Colors.brown));
 
   return GetMaterialApp(
     theme: theme,
