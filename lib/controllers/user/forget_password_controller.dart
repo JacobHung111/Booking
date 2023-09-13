@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 class ForgetPasswordController extends GetxController {
   var email = "".obs;
   var otp = "".obs;
+  var newPassword = "".obs;
   var counter = 120.obs;
   var isFailed = false.obs;
 
@@ -14,15 +15,21 @@ class ForgetPasswordController extends GetxController {
     super.onInit();
     ever(otp, (_) => isFailed(false));
     ever(email, (_) => isFailed(false));
+    ever(newPassword, (_) => isFailed(false));
   }
 
   bool isValidate() {
     return EmailValidator.validate(email.value) &&
         otp.value.length == 8 &&
-        !isFailed.value;
+        !isFailed.value &&
+        newPassword.value.isNotEmpty; // TODO: password validation
   }
 
-  owpOnClicked() {
+  bool isOtpCanSend() {
+    return counter.value == 120 && EmailValidator.validate(email.value);
+  }
+
+  otpOnClicked() {
     //TODO: API Called
     FocusManager.instance.primaryFocus?.unfocus();
     LoadingController.to.isLoading++;

@@ -4,7 +4,7 @@ import 'package:booking/pages/user/forget_password_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SignInController {
+class SignInController extends GetxController {
   var email = "".obs;
   var password = "".obs;
 

@@ -23,18 +23,22 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Color color = Theme.of(context).colorScheme.primary;
+    final Color bgcolor = Theme.of(context).colorScheme.background;
     return EasySplashScreen(
       logo: Image.network(
-          'https://cdn4.iconfinder.com/data/icons/logos-brands-5/24/flutter-512.png'),
-      title: const Text(
-        "Booking",
-        style: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-        ),
+        'https://cdn4.iconfinder.com/data/icons/logos-brands-5/24/flutter-512.png',
+        color: color,
       ),
+      title: Text(
+        "Booking",
+        style:
+            TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: color),
+      ),
+      loaderColor: color,
+      backgroundColor: bgcolor,
       showLoader: true,
-      loadingText: const Text("Loading..."),
+      loadingText: Text("Loading...", style: TextStyle(color: color)),
       futureNavigator: futureCall(),
     );
   }

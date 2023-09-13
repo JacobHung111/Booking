@@ -19,6 +19,7 @@ class ForgetPasswordPage extends GetView<ForgetPasswordController> {
       body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(
                   child: Column(
@@ -38,8 +39,8 @@ class ForgetPasswordPage extends GetView<ForgetPasswordController> {
                             title: controller.counter.value == 120
                                 ? "Send"
                                 : sprintf("%03is", [controller.counter.value]),
-                            onClick: controller.counter.value == 120
-                                ? controller.owpOnClicked
+                            onClick: controller.isOtpCanSend()
+                                ? controller.otpOnClicked
                                 : null))
                       ],
                     ),
@@ -48,12 +49,17 @@ class ForgetPasswordPage extends GetView<ForgetPasswordController> {
                         limit: 8,
                         hintText: 'OTP Code',
                         inputType: TextInputType.number,
-                        onChanged: controller.otp)
+                        onChanged: controller.otp),
+                    TextBox(
+                        hintText: 'New Passwords',
+                        inputType: TextInputType.visiblePassword,
+                        hideButton: true,
+                        onChanged: controller.newPassword)
                   ])),
               Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: Obx(() => SimpleButton(
-                      title: "Next",
+                      title: "Change",
                       onClick: controller.isValidate()
                           ? controller.forgetOnClicked
                           : null)))
