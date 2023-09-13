@@ -10,7 +10,9 @@ class TextBox extends StatelessWidget {
       required this.onChanged,
       this.hintText,
       this.isEnable = true,
-      this.limit});
+      this.limit}) {
+    _isHidden = hideButton.obs;
+  }
 
   final String? title;
   final TextInputType inputType;
@@ -20,7 +22,7 @@ class TextBox extends StatelessWidget {
   final bool isEnable;
   final int? limit;
 
-  final isHidden = false.obs;
+  late final RxBool _isHidden;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class TextBox extends StatelessWidget {
         maxLength: limit,
         enabled: isEnable,
         textInputAction: TextInputAction.done,
-        obscureText: isHidden.value,
+        obscureText: _isHidden.value,
         keyboardType: inputType,
         decoration: InputDecoration(
           hintText: hintText,
@@ -37,10 +39,10 @@ class TextBox extends StatelessWidget {
           suffixIcon: hideButton
               ? IconButton(
                   onPressed: () {
-                    isHidden(!isHidden.value);
+                    _isHidden(!_isHidden.value);
                   },
                   icon: Icon(
-                    isHidden.value ? Icons.hide_source : Icons.remove_red_eye,
+                    _isHidden.value ? Icons.hide_source : Icons.remove_red_eye,
                   ))
               : null,
           labelText: title,

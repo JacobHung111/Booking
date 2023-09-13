@@ -1,4 +1,7 @@
+import 'package:booking/pages/user/removeAcc_page.dart';
+import 'package:booking/widgets/simplebutton.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -7,6 +10,10 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(), body: const Center(child: Text("Profile Page")));
+        appBar: AppBar(),
+        body: Center(
+            child: SimpleButton(
+                title: "Remove Account",
+                onClick: () => Get.toNamed(RemoveAccPage.path))));
   }
 }

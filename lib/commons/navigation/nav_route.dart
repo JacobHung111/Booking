@@ -1,3 +1,5 @@
+import 'package:booking/controllers/user/remove_acc_controller.dart';
+import 'package:booking/pages/user/removeAcc_page.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/common/tabbar_controller.dart';
@@ -53,5 +55,11 @@ class NavigationRoute {
         binding: BindingsBuilder(() {
           Get.lazyPut(() => RegisterController());
         })),
+    GetPage(
+        name: RemoveAccPage.path,
+        page: () => const RemoveAccPage(),
+        binding: BindingsBuilder(() {
+          Get.lazyPut(() => RemoveAccController());
+        }))
   ];
 }

@@ -51,7 +51,7 @@ class ForgetPasswordPage extends GetView<ForgetPasswordController> {
                         inputType: TextInputType.number,
                         onChanged: controller.otp),
                     TextBox(
-                        hintText: 'New Passwords',
+                        hintText: 'New Password',
                         inputType: TextInputType.visiblePassword,
                         hideButton: true,
                         onChanged: controller.newPassword)
