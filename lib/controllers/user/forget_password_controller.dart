@@ -56,7 +56,7 @@ class ForgetPasswordController extends GetxController {
     LoadingController.to.isLoading++;
     Future.delayed(const Duration(seconds: 1), () {
       LoadingController.to.isLoading--;
-      if (false) {
+      if (true) {
         Get.back();
       } else {
         isFailed(true);

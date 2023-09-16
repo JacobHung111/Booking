@@ -3,8 +3,8 @@ import 'package:booking/commons/navigation/nav_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'pages/commons/loading_page.dart';
-import 'pages/commons/splash_page.dart';
+import 'views/pages/commons/loading_page.dart';
+import 'views/pages/commons/splash_page.dart';
 
 void main() {
   runApp(LoadingPage(underLoading: mainApp()));

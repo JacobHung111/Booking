@@ -1,7 +1,7 @@
 import 'package:booking/controllers/user/remove_acc_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:booking/widgets/simplebutton.dart';
-import 'package:booking/widgets/textbox.dart';
+import 'package:booking/commons/widgets/simplebutton.dart';
+import 'package:booking/commons/widgets/textbox.dart';
 import 'package:get/get.dart';
 
 class RemoveAccPage extends GetView<RemoveAccController> {

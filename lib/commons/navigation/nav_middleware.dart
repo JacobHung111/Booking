@@ -1,4 +1,4 @@
-import 'package:booking/pages/user/signIn_page.dart';
+import 'package:booking/views/pages/user/signIn_page.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 

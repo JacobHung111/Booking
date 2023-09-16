@@ -1,18 +1,18 @@
 import 'package:booking/controllers/user/remove_acc_controller.dart';
-import 'package:booking/pages/user/removeAcc_page.dart';
+import 'package:booking/views/pages/user/removeAcc_page.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/common/tabbar_controller.dart';
 import '../../controllers/user/forget_password_controller.dart';
 import '../../controllers/user/register_controller.dart';
 import '../../controllers/user/signin_controller.dart';
-import '../../pages/commons/splash_page.dart';
-import '../../pages/commons/tabbar_page.dart';
-import '../../pages/order/order_create_page.dart';
-import '../../pages/user/forget_password_page.dart';
-import '../../pages/user/profile_page.dart';
-import '../../pages/user/register_page.dart';
-import '../../pages/user/signIn_page.dart';
+import '../../views/pages/commons/splash_page.dart';
+import '../../views/pages/commons/tabbar_page.dart';
+import '../../views/pages/order/order_create_page.dart';
+import '../../views/pages/user/forget_password_page.dart';
+import '../../views/pages/user/profile_page.dart';
+import '../../views/pages/user/register_page.dart';
+import '../../views/pages/user/signIn_page.dart';
 
 class NavigationRoute {
   static final List<GetPage> route = [

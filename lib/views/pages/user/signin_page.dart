@@ -1,6 +1,6 @@
 import 'package:booking/controllers/user/signin_controller.dart';
-import 'package:booking/widgets/simplebutton.dart';
-import 'package:booking/widgets/textbox.dart';
+import 'package:booking/commons/widgets/simplebutton.dart';
+import 'package:booking/commons/widgets/textbox.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

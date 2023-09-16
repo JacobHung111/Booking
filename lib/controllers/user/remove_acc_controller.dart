@@ -1,4 +1,4 @@
-import 'package:booking/pages/user/signin_page.dart';
+import 'package:booking/views/pages/user/signin_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 

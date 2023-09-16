@@ -1,5 +1,5 @@
-import 'package:booking/pages/user/removeAcc_page.dart';
-import 'package:booking/widgets/simplebutton.dart';
+import 'package:booking/views/pages/user/removeAcc_page.dart';
+import 'package:booking/commons/widgets/simplebutton.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

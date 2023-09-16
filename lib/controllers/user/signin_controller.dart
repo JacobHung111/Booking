@@ -1,7 +1,7 @@
 import 'package:booking/controllers/common/loading_controller.dart';
-import 'package:booking/pages/commons/tabbar_page.dart';
-import 'package:booking/pages/user/forget_password_page.dart';
-import 'package:booking/pages/user/register_page.dart';
+import 'package:booking/views/pages/commons/tabbar_page.dart';
+import 'package:booking/views/pages/user/forget_password_page.dart';
+import 'package:booking/views/pages/user/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

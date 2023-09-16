@@ -1,19 +1,19 @@
-import 'package:booking/controllers/user/forget_password_controller.dart';
-import 'package:booking/widgets/simplebutton.dart';
+import 'package:booking/controllers/user/register_controller.dart';
+import 'package:booking/commons/widgets/simplebutton.dart';
 import 'package:flutter/material.dart';
-import 'package:booking/widgets/textbox.dart';
+import 'package:booking/commons/widgets/textbox.dart';
 import 'package:get/get.dart';
 import 'package:sprintf/sprintf.dart';
 
-class ForgetPasswordPage extends GetView<ForgetPasswordController> {
-  const ForgetPasswordPage({super.key});
-  static const String path = '/forgetPassword';
+class RegisterPage extends GetView<RegisterController> {
+  const RegisterPage({super.key});
+  static const String path = '/signUp';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Forget Password"),
+        title: const Text("Sign Up"),
         elevation: 0,
       ),
       body: Padding(
@@ -50,18 +50,25 @@ class ForgetPasswordPage extends GetView<ForgetPasswordController> {
                         hintText: 'OTP Code',
                         inputType: TextInputType.number,
                         onChanged: controller.otp),
+                    const SizedBox(height: 30),
                     TextBox(
-                        hintText: 'New Password',
+                        hintText: 'Password',
                         inputType: TextInputType.visiblePassword,
                         hideButton: true,
-                        onChanged: controller.newPassword)
+                        onChanged: controller.password),
+                    const SizedBox(height: 10),
+                    TextBox(
+                        hintText: 'Confirm Password',
+                        inputType: TextInputType.visiblePassword,
+                        hideButton: true,
+                        onChanged: controller.password)
                   ])),
               Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: Obx(() => SimpleButton(
                       title: "Change",
                       onClick: controller.isValidate()
-                          ? controller.forgetOnClicked
+                          ? controller.signUpOnClicked
                           : null)))
             ],
           )),
