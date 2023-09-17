@@ -3,6 +3,7 @@ import 'package:booking/commons/widgets/simplebutton.dart';
 import 'package:booking/commons/widgets/textbox.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:social_login_buttons/social_login_buttons.dart';
 
 class SignInPage extends GetView<SignInController> {
   const SignInPage({super.key});
@@ -10,6 +11,41 @@ class SignInPage extends GetView<SignInController> {
 
   @override
   Widget build(BuildContext context) {
+    final isIOS = Theme.of(context).platform == TargetPlatform.iOS;
+    final isAndroid = Theme.of(context).platform == TargetPlatform.android;
+
+    List<Widget> socialLogin = [
+      Flexible(
+          child: SocialLoginButton(
+        buttonType: SocialLoginButtonType.facebook,
+        mode: SocialLoginButtonMode.single,
+        text: "Facebook",
+        onPressed: () {},
+      ))
+    ];
+
+    if (isIOS) {
+      socialLogin.add(const SizedBox(width: 30));
+      socialLogin.add(Flexible(
+          child: SocialLoginButton(
+        buttonType: SocialLoginButtonType.apple,
+        mode: SocialLoginButtonMode.single,
+        text: "Apple",
+        onPressed: () {},
+      )));
+    }
+    if (isAndroid) {
+      socialLogin.add(const SizedBox(width: 30));
+      socialLogin.add(Flexible(
+          flex: 5,
+          child: SocialLoginButton(
+            buttonType: SocialLoginButtonType.google,
+            mode: SocialLoginButtonMode.single,
+            text: "Google",
+            onPressed: () {},
+          )));
+    }
+
     return Scaffold(
         body: Column(children: [
       Flexible(
@@ -59,20 +95,15 @@ class SignInPage extends GetView<SignInController> {
                           fontSize: 14, decoration: TextDecoration.underline)))
             ],
           )),
-      const Flexible(
+      Flexible(
           flex: 2,
           fit: FlexFit.tight,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SimpleButton(title: "Social Login 1"),
-              SizedBox(width: 30),
-              SimpleButton(
-                title: "Social Login 2",
-                style: SimpleButtonStyle.cancel,
-              ),
-            ],
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: socialLogin,
+            ),
           ))
     ]));
   }
