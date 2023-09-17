@@ -16,6 +16,9 @@ dependencies:
   easy_splash_screen: "1.0.4"
   sprintf: "7.0.0"
   email_validator: "2.1.17"
+  sign_in_with_apple: "5.0.0"
+  flutter_facebook_auth: "6.0.2"
+  google_sign_in: "6.1.5"
   flutter:
     sdk: flutter
 

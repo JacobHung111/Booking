@@ -44,12 +44,13 @@ class ForgetPasswordPage extends GetView<ForgetPasswordController> {
                                 : null))
                       ],
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 20),
                     TextBox(
                         limit: 8,
                         hintText: 'OTP Code',
                         inputType: TextInputType.number,
                         onChanged: controller.otp),
+                    const SizedBox(height: 20),
                     TextBox(
                         hintText: 'New Password',
                         inputType: TextInputType.visiblePassword,

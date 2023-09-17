@@ -33,6 +33,7 @@ class TextBox extends StatelessWidget {
         obscureText: _isHidden.value,
         keyboardType: inputType,
         decoration: InputDecoration(
+          counterText: '',
           hintText: hintText,
           focusedBorder: const UnderlineInputBorder(),
           enabledBorder: const UnderlineInputBorder(),

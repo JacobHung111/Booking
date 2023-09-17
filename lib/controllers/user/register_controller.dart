@@ -7,6 +7,8 @@ import '../common/loading_controller.dart';
 class RegisterController extends GetxController {
   var email = "".obs;
   var otp = "".obs;
+  var userName = "".obs;
+  var phoneNum = "".obs;
   var password = "".obs;
   var confirmPassword = "".obs;
   var counter = 120.obs;
