@@ -8,6 +8,11 @@ class OrderCreatePage extends GetView<OrderCreateController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(), body: ListView());
+    return Scaffold(
+        appBar: AppBar(),
+        body: ListView(
+          padding: const EdgeInsets.all(10),
+          children: [],
+        ));
   }
 }

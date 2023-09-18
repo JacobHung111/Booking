@@ -5,6 +5,7 @@ import '../common/loading_controller.dart';
 
 class OrderCreateController extends GetxController {
   var orderDetail = OrderCreateListModel().obs;
+
   createOnClicked() {
     FocusManager.instance.primaryFocus?.unfocus();
     LoadingController.to.isLoading++;

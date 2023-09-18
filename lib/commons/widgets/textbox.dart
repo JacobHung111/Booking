@@ -20,7 +20,7 @@ class TextBox extends StatelessWidget {
   final TextInputType inputType;
   final bool hideButton;
   final TextEditingController? controller;
-  final RxString? onChanged;
+  final Function(String)? onChanged;
   final String? hintText;
   final bool isEnable;
   final int? limit;
@@ -52,8 +52,6 @@ class TextBox extends StatelessWidget {
               : null,
           labelText: title,
         ),
-        onChanged: (s) {
-          onChanged?.update((val) => val = s);
-        }));
+        onChanged: onChanged));
   }
 }
