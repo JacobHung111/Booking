@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SignInController extends GetxController {
-  var email = "".obs;
-  var password = "".obs;
+  var email = TextEditingController();
+  var password = TextEditingController();
 
   signInOnClicked() {
     //TODO: API Called

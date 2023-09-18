@@ -6,7 +6,7 @@ class NavigationMiddleWare {
   static final List<String> _darkStatusBarPages = [SignInPage.path];
   static observer(Routing? r) {
     // waiting for navigate animation
-    Future.delayed(const Duration(milliseconds: 100), () {
+    Future.delayed(const Duration(milliseconds: 500), () {
       if (_darkStatusBarPages.contains(r?.current)) {
         SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
       } else {

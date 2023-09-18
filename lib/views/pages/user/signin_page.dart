@@ -1,6 +1,7 @@
 import 'package:booking/controllers/user/signin_controller.dart';
 import 'package:booking/commons/widgets/simplebutton.dart';
 import 'package:booking/commons/widgets/textbox.dart';
+import 'package:booking/views/pages/user/user_suspend_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
@@ -20,7 +21,11 @@ class SignInPage extends GetView<SignInController> {
         buttonType: SocialLoginButtonType.facebook,
         mode: SocialLoginButtonMode.single,
         text: "Facebook",
-        onPressed: () {},
+        onPressed: () {
+          Get.to(() => const UserSuspendPage(reason: "Error"));
+          controller.email.text = "";
+          controller.password.text = "";
+        },
       ))
     ];
 
@@ -60,14 +65,14 @@ class SignInPage extends GetView<SignInController> {
                   child: TextBox(
                       title: 'Email',
                       inputType: TextInputType.emailAddress,
-                      onChanged: controller.email)),
+                      controller: controller.email)),
               Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                   child: TextBox(
                       title: 'Password',
                       hideButton: true,
-                      onChanged: controller.password)),
+                      controller: controller.password)),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 5, horizontal: 20),

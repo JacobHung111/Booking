@@ -8,7 +8,8 @@ class TextBox extends StatelessWidget {
       this.title,
       this.inputType = TextInputType.text,
       this.hideButton = false,
-      required this.onChanged,
+      this.controller,
+      this.onChanged,
       this.hintText,
       this.isEnable = true,
       this.limit}) {
@@ -18,7 +19,8 @@ class TextBox extends StatelessWidget {
   final String? title;
   final TextInputType inputType;
   final bool hideButton;
-  final RxString onChanged;
+  final TextEditingController? controller;
+  final RxString? onChanged;
   final String? hintText;
   final bool isEnable;
   final int? limit;
@@ -28,6 +30,7 @@ class TextBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() => TextField(
+        controller: controller,
         maxLength: limit,
         enabled: isEnable,
         textInputAction: TextInputAction.done,
@@ -49,6 +52,8 @@ class TextBox extends StatelessWidget {
               : null,
           labelText: title,
         ),
-        onChanged: onChanged));
+        onChanged: (s) {
+          onChanged?.update((val) => val = s);
+        }));
   }
 }
