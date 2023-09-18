@@ -1,4 +1,6 @@
+import 'package:booking/views/pages/user/signin_page.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../../../controllers/common/tabbar_controller.dart';
@@ -21,15 +23,15 @@ class TabBarPage extends GetView<TabbarController> {
 
   static const List<BottomNavigationBarItem> _tabbarItems = [
     BottomNavigationBarItem(
-      icon: Icon(Icons.pending),
+      icon: FaIcon(FontAwesomeIcons.clockRotateLeft),
       label: 'Pending',
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.receipt),
+      icon: FaIcon(FontAwesomeIcons.star),
       label: 'Active',
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.history),
+      icon: FaIcon(FontAwesomeIcons.timeline),
       label: 'History',
     )
   ];
@@ -37,16 +39,16 @@ class TabBarPage extends GetView<TabbarController> {
   final List<Widget> _topbarActions = [
     IconButton(
         onPressed: () => Get.toNamed(OrderCreatePage.path),
-        icon: const Icon(Icons.create)),
+        icon: const FaIcon(FontAwesomeIcons.handSparkles)),
     IconButton(
         onPressed: () => Get.toNamed(ProfilePage.path),
-        icon: const Icon(Icons.supervised_user_circle)),
+        icon: const FaIcon(FontAwesomeIcons.user)),
     IconButton(
         onPressed: () => (),
-        icon: const Icon(Icons.call)), //TODO: add phone call
+        icon: const FaIcon(FontAwesomeIcons.whatsapp)), //TODO: add phone call
     IconButton(
-        onPressed: () => {},
-        icon: const Icon(Icons.logout)) //TODO: Logout function
+        onPressed: () => Get.offAllNamed(SignInPage.path),
+        icon: const FaIcon(FontAwesomeIcons.eject)) //TODO: Logout function
   ];
 
   @override

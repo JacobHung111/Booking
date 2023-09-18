@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 class TextBox extends StatelessWidget {
@@ -42,9 +43,9 @@ class TextBox extends StatelessWidget {
                   onPressed: () {
                     _isHidden(!_isHidden.value);
                   },
-                  icon: Icon(
-                    _isHidden.value ? Icons.hide_source : Icons.remove_red_eye,
-                  ))
+                  icon: FaIcon(_isHidden.value
+                      ? FontAwesomeIcons.eye
+                      : FontAwesomeIcons.eyeSlash))
               : null,
           labelText: title,
         ),

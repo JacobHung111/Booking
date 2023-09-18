@@ -99,7 +99,7 @@ class SignInPage extends GetView<SignInController> {
           flex: 2,
           fit: FlexFit.tight,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: socialLogin,

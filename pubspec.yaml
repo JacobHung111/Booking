@@ -20,6 +20,7 @@ dependencies:
   flutter_facebook_auth: "6.0.2"
   google_sign_in: "6.1.5"
   social_login_buttons: "1.0.7"
+  font_awesome_flutter: "10.5.0"
   flutter:
     sdk: flutter
 
