@@ -39,8 +39,6 @@ class TextBox extends StatelessWidget {
         decoration: InputDecoration(
           counterText: '',
           hintText: hintText,
-          focusedBorder: const UnderlineInputBorder(),
-          enabledBorder: const UnderlineInputBorder(),
           suffixIcon: hideButton
               ? IconButton(
                   onPressed: () {

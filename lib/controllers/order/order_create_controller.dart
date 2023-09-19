@@ -9,8 +9,9 @@ class OrderCreateController extends GetxController {
   var orderDetail = OrderCreateListModel().obs;
 
   var dateTimeController = TextEditingController();
+  var addressController = TextEditingController();
 
-  final DateFormat formatter = DateFormat('yyyy-MM-dd hh:mm');
+  final DateFormat formatter = DateFormat('yyyy-MM-dd HH:mm');
 
   createOnClicked() {
     FocusManager.instance.primaryFocus?.unfocus();

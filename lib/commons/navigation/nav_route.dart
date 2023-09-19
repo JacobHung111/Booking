@@ -1,3 +1,5 @@
+import 'package:booking/controllers/common/geo_controller.dart';
+import 'package:booking/views/pages/commons/geo_page.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/common/tabbar_controller.dart';
@@ -64,6 +66,12 @@ class NavigationRoute {
         page: () => const RemoveAccPage(),
         binding: BindingsBuilder(() {
           Get.lazyPut(() => RemoveAccController());
+        })),
+    GetPage(
+        name: GeoPage.path,
+        page: () => const GeoPage(),
+        binding: BindingsBuilder(() {
+          Get.lazyPut(() => GeoController());
         }))
   ];
 }

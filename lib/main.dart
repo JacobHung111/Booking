@@ -1,13 +1,14 @@
 import 'package:booking/commons/navigation/nav_middleware.dart';
 import 'package:booking/commons/navigation/nav_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
 import 'views/pages/commons/loading_page.dart';
 import 'views/pages/commons/splash_page.dart';
 
 void main() {
-  runApp(LoadingPage(underLoading: mainApp()));
+  runApp(ProviderScope(child: LoadingPage(underLoading: mainApp())));
 }
 
 Widget mainApp() {
@@ -25,7 +26,7 @@ Widget mainApp() {
       background: Colors.yellow,
       onBackground: Colors.purple,
       surface: Colors.blueGrey,
-      onSurface: Colors.green, //btn border, disabled btn
+      onSurface: Colors.green, //btn border, disabled btn, textfield border
     ),
   );
 

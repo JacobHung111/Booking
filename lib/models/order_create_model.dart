@@ -1,8 +1,9 @@
+import 'package:address_search_field/address_search_field.dart';
 import 'package:image_picker/image_picker.dart';
 
 class OrderCreateListModel {
   DateTime? date;
-  OrderCreateAddressModel? address;
+  Address? address;
   OrderCreateOptionModel? option;
   String? comments;
   int bonus = 0;
@@ -15,16 +16,6 @@ class OrderCreateListModel {
       this.comments,
       this.bonus = 0,
       this.images});
-}
-
-class OrderCreateAddressModel {
-  String address;
-  String locality;
-  String postCode;
-  String country;
-
-  OrderCreateAddressModel(
-      this.address, this.locality, this.postCode, this.country);
 }
 
 class OrderCreateOptionModel {
