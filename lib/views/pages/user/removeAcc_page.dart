@@ -13,7 +13,6 @@ class RemoveAccPage extends GetView<RemoveAccController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Remove Account"),
-        elevation: 0,
       ),
       body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),

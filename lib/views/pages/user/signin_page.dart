@@ -42,13 +42,12 @@ class SignInPage extends GetView<SignInController> {
     if (isAndroid) {
       socialLogin.add(const SizedBox(width: 30));
       socialLogin.add(Flexible(
-          flex: 5,
           child: SocialLoginButton(
-            buttonType: SocialLoginButtonType.google,
-            mode: SocialLoginButtonMode.single,
-            text: "Google",
-            onPressed: () {},
-          )));
+        buttonType: SocialLoginButtonType.google,
+        mode: SocialLoginButtonMode.single,
+        text: "Google",
+        onPressed: () {},
+      )));
     }
 
     return Scaffold(

@@ -13,22 +13,13 @@ void main() {
 
 Widget mainApp() {
   ThemeData theme = ThemeData(
-    brightness: Brightness.light,
-    colorScheme: const ColorScheme(
-      brightness: Brightness.light,
-      primary: Colors
-          .red, //fullbtn bg, textbtn text, textbtn underline, navbar bg, selected icon color
-      onPrimary: Colors.blue, //fullbtn text, navbar text, navbar icon
-      secondary: Colors.orange,
-      onSecondary: Colors.grey,
-      error: Colors.white,
-      onError: Colors.black,
-      background: Colors.yellow,
-      onBackground: Colors.purple,
-      surface: Colors.blueGrey,
-      onSurface: Colors.green, //btn border, disabled btn, textfield border
-    ),
-  );
+      useMaterial3: true,
+      colorSchemeSeed: Colors.indigo,
+      appBarTheme: const AppBarTheme(
+          elevation: 3, scrolledUnderElevation: 6, shadowColor: Colors.black));
+  // theme = theme.copyWith(
+  //     appBarTheme: theme.appBarTheme.copyWith(
+  //         elevation: 5, scrolledUnderElevation: 7, shadowColor: Colors.black));
 
   return GetMaterialApp(
     theme: theme,

@@ -14,7 +14,6 @@ class ForgetPasswordPage extends GetView<ForgetPasswordController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Forget Password"),
-        elevation: 0,
       ),
       body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),

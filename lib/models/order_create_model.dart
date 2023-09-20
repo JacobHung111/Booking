@@ -4,27 +4,21 @@ import 'package:image_picker/image_picker.dart';
 class OrderCreateListModel {
   DateTime? date;
   Address? address;
-  OrderCreateOptionModel? option;
+  OrderCreateOptionModel option = OrderCreateOptionModel();
   String? comments;
   int bonus = 0;
   List<XFile>? images;
 
   OrderCreateListModel(
-      {this.date,
-      this.address,
-      this.option,
-      this.comments,
-      this.bonus = 0,
-      this.images});
+      {this.date, this.address, this.comments, this.bonus = 0, this.images});
 }
 
 class OrderCreateOptionModel {
-  int rooms;
-  int ovenToClean;
-  int toilets;
-  bool grassCut;
-  bool workingWithDogs;
+  int rooms = 0;
+  int ovenToClean = 0;
+  int toilets = 0;
+  bool grassCut = false;
+  bool workingWithDogs = false;
 
-  OrderCreateOptionModel(this.rooms, this.ovenToClean, this.toilets,
-      this.grassCut, this.workingWithDogs);
+  OrderCreateOptionModel();
 }

@@ -45,8 +45,8 @@ class TextBox extends StatelessWidget {
                     _isHidden(!_isHidden.value);
                   },
                   icon: FaIcon(_isHidden.value
-                      ? FontAwesomeIcons.eye
-                      : FontAwesomeIcons.eyeSlash))
+                      ? FontAwesomeIcons.eyeSlash
+                      : FontAwesomeIcons.eye))
               : null,
           labelText: title,
         ),

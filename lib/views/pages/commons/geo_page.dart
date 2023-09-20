@@ -13,7 +13,9 @@ class GeoPage extends GetView<GeoController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Address"),
+      ),
       body: Stack(
         children: [
           Obx(() => GoogleMap(
@@ -32,8 +34,11 @@ class GeoPage extends GetView<GeoController> {
               decoration: InputDecoration(
                   suffixIcon: IconButton(
                       icon: const FaIcon(FontAwesomeIcons.arrowRight),
-                      onPressed: () =>
-                          Get.back(result: controller.pointedAddress.value)),
+                      onPressed: () {
+                        if (controller.pointedAddress.value != null) {
+                          Get.back(result: controller.pointedAddress.value);
+                        }
+                      }),
                   border: OutlineInputBorder(
                       borderSide: const BorderSide(width: 0),
                       borderRadius: BorderRadius.circular(30)),

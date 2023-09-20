@@ -55,6 +55,7 @@ class TabBarPage extends GetView<TabbarController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          elevation: 0,
           actions: _topbarActions,
         ),
         bottomNavigationBar: Obx(() => BottomNavigationBar(
