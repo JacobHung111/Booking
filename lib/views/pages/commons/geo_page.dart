@@ -33,7 +33,7 @@ class GeoPage extends GetView<GeoController> {
             child: TextField(
               decoration: InputDecoration(
                   suffixIcon: IconButton(
-                      icon: const FaIcon(FontAwesomeIcons.arrowRight),
+                      icon: const Icon(FontAwesomeIcons.arrowRight),
                       onPressed: () {
                         if (controller.pointedAddress.value != null) {
                           Get.back(result: controller.pointedAddress.value);
@@ -70,7 +70,7 @@ class GeoPage extends GetView<GeoController> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        child: const FaIcon(FontAwesomeIcons.mapLocation),
+        child: const Icon(FontAwesomeIcons.mapLocation),
         onPressed: () async {
           controller.determinePosition().then((value) {
             return _goToPoint(LatLng(value.latitude, value.longitude))

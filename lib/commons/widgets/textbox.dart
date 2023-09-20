@@ -44,7 +44,7 @@ class TextBox extends StatelessWidget {
                   onPressed: () {
                     _isHidden(!_isHidden.value);
                   },
-                  icon: FaIcon(_isHidden.value
+                  icon: Icon(_isHidden.value
                       ? FontAwesomeIcons.eyeSlash
                       : FontAwesomeIcons.eye))
               : null,

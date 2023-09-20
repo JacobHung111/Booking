@@ -8,11 +8,18 @@ class ImagePickerController extends GetxController {
       <String, (String, bool)>{}.obs; // <fileName, (filePath, selected)>
   var imageListInList = RxList<(String, String, bool)>([]);
   final ImagePicker _picker = ImagePicker();
-  var buttonsPosition = RxDouble(0);
-  GlobalKey key = GlobalKey();
 
   @override
   void onInit() {
+    super.onInit();
+    ever(imageList, (callback) {
+      List<(String, String, bool)> list =
+          callback.entries.map((e) => (e.key, e.value.$1, e.value.$2)).toList();
+      imageListInList(list);
+    });
+  }
+
+  layoutUpdate() {
     var image1 =
         Get.arguments as List<(String, String)>?; // (fileName, filePath)
     if (image1 != null) {
@@ -21,21 +28,6 @@ class ImagePickerController extends GetxController {
       };
       imageList(image2);
     }
-
-    Future.delayed(const Duration(milliseconds: 100), () {
-      RenderBox box = key.currentContext?.findRenderObject() as RenderBox;
-      Offset position =
-          box.localToGlobal(Offset.zero); //this is global position
-      double y = position.dy;
-      buttonsPosition(y);
-    });
-    ever(imageList, (callback) {
-      List<(String, String, bool)> list =
-          callback.entries.map((e) => (e.key, e.value.$1, e.value.$2)).toList();
-      imageListInList(list);
-    });
-
-    super.onInit();
   }
 
   openCamera() {

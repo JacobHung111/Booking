@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:booking/controllers/order/order_create_controller.dart';
 import 'package:booking/views/dialogs/datetime_dialogs.dart';
 import 'package:booking/views/pages/commons/geo_page.dart';
@@ -33,7 +35,7 @@ class OrderCreatePage extends GetView<OrderCreateController> {
         body: Theme(
             data: theme,
             child: ListView(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10).copyWith(bottom: 20),
               children: [
                 Row(
                   children: [
@@ -56,7 +58,7 @@ class OrderCreatePage extends GetView<OrderCreateController> {
                                   controller.orderDetail.value.date, (value) {
                                 controller.updateDateTime(value);
                               }),
-                          icon: const FaIcon(FontAwesomeIcons.calendar)),
+                          icon: const Icon(FontAwesomeIcons.calendar)),
                       IconButton(
                           onPressed: () => DateTimeDialogs.showDialogTimePicker(
                                   context,
@@ -64,7 +66,7 @@ class OrderCreatePage extends GetView<OrderCreateController> {
                                   controller.orderDetail.value.date, (value) {
                                 controller.updateDateTime(value);
                               }),
-                          icon: const FaIcon(FontAwesomeIcons.clock))
+                          icon: const Icon(FontAwesomeIcons.clock))
                     ])
                   ],
                 ),
@@ -85,7 +87,7 @@ class OrderCreatePage extends GetView<OrderCreateController> {
                             controller.updateAddress(address);
                           });
                         },
-                        icon: const FaIcon(FontAwesomeIcons.map))
+                        icon: const Icon(FontAwesomeIcons.map))
                   ],
                 ),
                 Row(
@@ -103,10 +105,10 @@ class OrderCreatePage extends GetView<OrderCreateController> {
                     Row(children: [
                       IconButton(
                           onPressed: () => controller.updateNoOfRoom(true),
-                          icon: const FaIcon(FontAwesomeIcons.plus)),
+                          icon: const Icon(FontAwesomeIcons.plus)),
                       IconButton(
                           onPressed: () => controller.updateNoOfRoom(false),
-                          icon: const FaIcon(FontAwesomeIcons.minus))
+                          icon: const Icon(FontAwesomeIcons.minus))
                     ])
                   ],
                 ),
@@ -125,10 +127,10 @@ class OrderCreatePage extends GetView<OrderCreateController> {
                     Row(children: [
                       IconButton(
                           onPressed: () => controller.updateNoOfOven(true),
-                          icon: const FaIcon(FontAwesomeIcons.plus)),
+                          icon: const Icon(FontAwesomeIcons.plus)),
                       IconButton(
                           onPressed: () => controller.updateNoOfOven(false),
-                          icon: const FaIcon(FontAwesomeIcons.minus))
+                          icon: const Icon(FontAwesomeIcons.minus))
                     ])
                   ],
                 ),
@@ -147,10 +149,10 @@ class OrderCreatePage extends GetView<OrderCreateController> {
                     Row(children: [
                       IconButton(
                           onPressed: () => controller.updateNoOfToilet(true),
-                          icon: const FaIcon(FontAwesomeIcons.plus)),
+                          icon: const Icon(FontAwesomeIcons.plus)),
                       IconButton(
                           onPressed: () => controller.updateNoOfToilet(false),
-                          icon: const FaIcon(FontAwesomeIcons.minus))
+                          icon: const Icon(FontAwesomeIcons.minus))
                     ])
                   ],
                 ),
@@ -205,6 +207,38 @@ class OrderCreatePage extends GetView<OrderCreateController> {
                     ],
                   ),
                 ),
+                Obx(() {
+                  var imageList = controller.orderDetail.value.images ?? [];
+                  return SizedBox(
+                      height: 120,
+                      width: double.infinity,
+                      child: GridView.builder(
+                          itemCount: imageList.length + 1,
+                          itemBuilder: (BuildContext context, int index) {
+                            if (index < imageList.length) {
+                              return Card(
+                                  child: Padding(
+                                      padding: const EdgeInsets.all(5),
+                                      child: Image.file(
+                                          File(imageList[index].$2))));
+                            } else {
+                              return InkWell(
+                                child: const Card(
+                                    child: Center(
+                                        child: Icon(FontAwesomeIcons.plus))),
+                                onTap: () => controller.updateImage(),
+                              );
+                            }
+                          },
+                          scrollDirection: Axis.horizontal,
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 1)
+                          // const SliverGridDelegateWithMaxCrossAxisExtent(
+                          //     maxCrossAxisExtent: 120),
+                          ));
+                }),
                 TextField(
                   controller: controller.bonusController,
                   decoration: const InputDecoration(

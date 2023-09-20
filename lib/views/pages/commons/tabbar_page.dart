@@ -24,15 +24,15 @@ class TabBarPage extends GetView<TabbarController> {
 
   static const List<BottomNavigationBarItem> _tabbarItems = [
     BottomNavigationBarItem(
-      icon: FaIcon(FontAwesomeIcons.clockRotateLeft),
+      icon: Icon(FontAwesomeIcons.clockRotateLeft),
       label: 'Pending',
     ),
     BottomNavigationBarItem(
-      icon: FaIcon(FontAwesomeIcons.star),
+      icon: Icon(FontAwesomeIcons.star),
       label: 'Active',
     ),
     BottomNavigationBarItem(
-      icon: FaIcon(FontAwesomeIcons.timeline),
+      icon: Icon(FontAwesomeIcons.timeline),
       label: 'History',
     )
   ];
@@ -40,16 +40,16 @@ class TabBarPage extends GetView<TabbarController> {
   final List<Widget> _topbarActions = [
     IconButton(
         onPressed: () => Get.toNamed(OrderCreatePage.path),
-        icon: const FaIcon(FontAwesomeIcons.handSparkles)),
+        icon: const Icon(FontAwesomeIcons.handSparkles)),
     IconButton(
         onPressed: () => Get.toNamed(ProfilePage.path),
-        icon: const FaIcon(FontAwesomeIcons.user)),
+        icon: const Icon(FontAwesomeIcons.user)),
     IconButton(
-        onPressed: () => (Get.toNamed(ImagePickerPage.path)),
-        icon: const FaIcon(FontAwesomeIcons.whatsapp)), //TODO: add phone call
+        onPressed: () {},
+        icon: const Icon(FontAwesomeIcons.whatsapp)), //TODO: add phone call
     IconButton(
         onPressed: () => Get.offAllNamed(SignInPage.path),
-        icon: const FaIcon(FontAwesomeIcons.eject)) //TODO: Logout function
+        icon: const Icon(FontAwesomeIcons.eject)) //TODO: Logout function
   ];
 
   @override

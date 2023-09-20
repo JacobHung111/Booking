@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:address_search_field/address_search_field.dart';
+import 'package:booking/views/pages/commons/image_picker_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -96,6 +97,17 @@ class OrderCreateController extends GetxController {
       val?.bonus = b;
     });
     bonusController.text = sprintf("%.02f", [d]);
+  }
+
+  updateImage() {
+    Get.toNamed(ImagePickerPage.path, arguments: orderDetail.value.images)
+        ?.then((value) {
+      orderDetail.update((val) {
+        if (value != null) {
+          val?.images = value as List<(String, String)>;
+        }
+      });
+    });
   }
 
   @override
