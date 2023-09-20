@@ -18,7 +18,8 @@ class ImagePickerPage extends GetView<ImagePickerController> {
               onPressed: () {
                 Get.back(
                     result: controller.imageListInList
-                        .where((p0) => p0.$2)
+                        .where((p0) => p0.$3)
+                        .map((e) => (e.$1, e.$2))
                         .toList());
               },
               child: const Text("Import"))
@@ -56,16 +57,16 @@ class ImagePickerPage extends GetView<ImagePickerController> {
 
   Widget? _gridItemView(BuildContext context, int index) {
     var value = controller.imageListInList[index];
-    var filename = value.$1.name;
-    var filepath = value.$1.path;
-    var selected = value.$2;
+    var filename = value.$1;
+    var filepath = value.$2;
+    var selected = value.$3;
     return GestureDetector(
         child: Container(
             padding: const EdgeInsets.all(5),
             decoration: BoxDecoration(
                 border: Border.all(
                     width: 2,
-                    color: value.$2
+                    color: value.$3
                         ? Theme.of(context).primaryColor
                         : Colors.transparent)),
             child: Stack(fit: StackFit.expand, children: [
@@ -74,7 +75,7 @@ class ImagePickerPage extends GetView<ImagePickerController> {
                   right: 10,
                   bottom: 10,
                   child: FaIcon(
-                    value.$2
+                    value.$3
                         ? FontAwesomeIcons.solidCircleCheck
                         : FontAwesomeIcons.circle,
                     size: 30,
@@ -82,7 +83,7 @@ class ImagePickerPage extends GetView<ImagePickerController> {
                   )),
             ])),
         onTap: () {
-          controller.imageList[filename] = (value.$1, !selected);
+          controller.imageList[filename] = (filepath, !selected);
         });
   }
 }
