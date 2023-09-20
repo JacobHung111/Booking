@@ -45,8 +45,8 @@ class DateTimeDialogs {
     ).then((value) {
       if (value == null) return;
       final year = current?.year ?? DateTime.now().year;
-      final month = current?.month ?? 1;
-      final day = current?.day ?? 1;
+      final month = current?.month ?? DateTime.now().month;
+      final day = current?.day ?? DateTime.now().day;
       final updated = DateTime(year, month, day, value.hour, value.minute);
       updateDateTime(updated);
     }, onError: (error) {

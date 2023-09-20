@@ -1,5 +1,7 @@
 import 'package:booking/controllers/common/geo_controller.dart';
+import 'package:booking/controllers/common/image_picker_controller.dart';
 import 'package:booking/views/pages/commons/geo_page.dart';
+import 'package:booking/views/pages/commons/image_picker_page.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/common/tabbar_controller.dart';
@@ -72,6 +74,14 @@ class NavigationRoute {
         page: () => const GeoPage(),
         binding: BindingsBuilder(() {
           Get.lazyPut(() => GeoController());
-        }))
+        })),
+    GetPage(
+        name: ImagePickerPage.path,
+        page: () => const ImagePickerPage(),
+        binding: BindingsBuilder(() {
+          Get.lazyPut(() => ImagePickerController());
+        }),
+        transition: Transition.downToUp,
+        fullscreenDialog: true),
   ];
 }

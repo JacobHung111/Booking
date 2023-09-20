@@ -48,10 +48,14 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string> App 需要您的同意, 才能始終訪問位置</string>
+	<string>Location is required to find out where you are</string>
 	<key>NSLocationUsageDescription</key>
-	<string> App 需要您的同意, 才能訪問位置</string>
+	<string>Location is required to find out where you are</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string> App 需要您的同意, 才能在使用期間訪問位置</string>
+	<string>Location is required to find out where you are</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo Library access is required to upload photos</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera permission is required to take photos</string>
 </dict>
 </plist>

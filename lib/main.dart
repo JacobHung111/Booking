@@ -17,9 +17,6 @@ Widget mainApp() {
       colorSchemeSeed: Colors.indigo,
       appBarTheme: const AppBarTheme(
           elevation: 3, scrolledUnderElevation: 6, shadowColor: Colors.black));
-  // theme = theme.copyWith(
-  //     appBarTheme: theme.appBarTheme.copyWith(
-  //         elevation: 5, scrolledUnderElevation: 7, shadowColor: Colors.black));
 
   return GetMaterialApp(
     theme: theme,
