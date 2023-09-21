@@ -20,6 +20,7 @@ class GeoController extends GetxController {
 
   Rx<Address?> pointedAddress = Rx<Address?>(null);
   Rx<Marker?> marker = Rx<Marker?>(null);
+  Rx<bool> enable = true.obs;
 
   Future<Position> determinePosition() async {
     bool serviceEnabled;
@@ -49,16 +50,26 @@ class GeoController extends GetxController {
   final TextEditingController addressTextController = TextEditingController();
   late final GoogleMapController googleMapController;
 
+  Future<void> _goToPoint(LatLng value) async {
+    await googleMapController.animateCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(target: value, zoom: 15.0)));
+  }
+
   @override
   void onInit() {
     ever(pointedAddress, (callback) {
       if (callback?.coords != null) {
+        _goToPoint(
+            LatLng(callback!.coords!.latitude, callback!.coords!.longitude));
         marker(Marker(
             markerId: const MarkerId("Address"),
-            position: LatLng(
-                callback!.coords!.latitude, callback.coords!.longitude)));
+            position:
+                LatLng(callback.coords!.latitude, callback.coords!.longitude)));
+        addressTextController.text = callback.reference ??
+            "Unknown Place (${callback.coords?.latitude}.${callback.coords?.latitude})";
       }
     });
+    pointedAddress(Get.arguments?['address'] as Address?);
     super.onInit();
   }
 

@@ -1,19 +1,21 @@
-import 'package:booking/controllers/common/geo_controller.dart';
-import 'package:booking/controllers/common/image_picker_controller.dart';
-import 'package:booking/controllers/order/order_pending_controller.dart';
-import 'package:booking/views/pages/commons/geo_page.dart';
-import 'package:booking/views/pages/commons/image_picker_page.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/common/geo_controller.dart';
+import '../../controllers/common/image_picker_controller.dart';
 import '../../controllers/common/tabbar_controller.dart';
+import '../../controllers/order/order_detail_controller.dart';
+import '../../controllers/order/order_pending_controller.dart';
 import '../../controllers/user/forget_password_controller.dart';
 import '../../controllers/user/register_controller.dart';
 import '../../controllers/user/signin_controller.dart';
 import '../../controllers/user/remove_acc_controller.dart';
 import '../../controllers/order/order_create_controller.dart';
+import '../../views/pages/commons/geo_page.dart';
+import '../../views/pages/commons/image_picker_page.dart';
 import '../../views/pages/commons/splash_page.dart';
 import '../../views/pages/commons/tabbar_page.dart';
 import '../../views/pages/order/order_create_page.dart';
+import '../../views/pages/order/order_detail_page.dart';
 import '../../views/pages/user/forget_password_page.dart';
 import '../../views/pages/user/profile_page.dart';
 import '../../views/pages/user/register_page.dart';
@@ -50,6 +52,12 @@ class NavigationRoute {
         }),
         transition: Transition.downToUp,
         fullscreenDialog: true),
+    GetPage(
+        name: OrderDetailPage.path,
+        page: () => const OrderDetailPage(),
+        binding: BindingsBuilder(() {
+          Get.lazyPut(() => OrderDetailController());
+        })),
     GetPage(
         name: ProfilePage.path,
         page: () => const ProfilePage(),

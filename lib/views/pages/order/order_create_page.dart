@@ -42,7 +42,6 @@ class OrderCreatePage extends GetView<OrderCreateController> {
                     Expanded(
                         child: TextField(
                             controller: controller.dateTimeController,
-                            readOnly: true,
                             enabled: false,
                             style: const TextStyle(color: Colors.black),
                             decoration: const InputDecoration(
@@ -74,8 +73,9 @@ class OrderCreatePage extends GetView<OrderCreateController> {
                   children: [
                     Expanded(
                         child: TextField(
+                            maxLines: 3,
+                            minLines: 1,
                             controller: controller.addressController,
-                            readOnly: true,
                             enabled: false,
                             style: const TextStyle(color: Colors.black),
                             decoration:
@@ -95,7 +95,6 @@ class OrderCreatePage extends GetView<OrderCreateController> {
                     Expanded(
                         child: TextField(
                             controller: controller.noOfRoomController,
-                            readOnly: true,
                             enabled: false,
                             style: const TextStyle(color: Colors.black),
                             decoration: InputDecoration(
@@ -117,7 +116,6 @@ class OrderCreatePage extends GetView<OrderCreateController> {
                     Expanded(
                         child: TextField(
                             controller: controller.noOfOvenController,
-                            readOnly: true,
                             enabled: false,
                             style: const TextStyle(color: Colors.black),
                             decoration: InputDecoration(
@@ -139,7 +137,6 @@ class OrderCreatePage extends GetView<OrderCreateController> {
                     Expanded(
                         child: TextField(
                             controller: controller.noOfToiletController,
-                            readOnly: true,
                             enabled: false,
                             style: const TextStyle(color: Colors.black),
                             decoration: InputDecoration(
@@ -251,6 +248,7 @@ class OrderCreatePage extends GetView<OrderCreateController> {
                 Padding(
                   padding: const EdgeInsets.all(15),
                   child: TextField(
+                    controller: controller.commentController,
                     onChanged: (value) {
                       controller.updateComment(value);
                     },

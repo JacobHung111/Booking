@@ -12,6 +12,7 @@ class GeoPage extends GetView<GeoController> {
 
   @override
   Widget build(BuildContext context) {
+    bool enabled = Get.arguments?['enable'] as bool? ?? true;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Address"),
@@ -31,14 +32,17 @@ class GeoPage extends GetView<GeoController> {
           Padding(
             padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
             child: TextField(
+              enabled: enabled,
               decoration: InputDecoration(
-                  suffixIcon: IconButton(
-                      icon: const Icon(FontAwesomeIcons.arrowRight),
-                      onPressed: () {
-                        if (controller.pointedAddress.value != null) {
-                          Get.back(result: controller.pointedAddress.value);
-                        }
-                      }),
+                  suffixIcon: enabled
+                      ? IconButton(
+                          icon: const Icon(FontAwesomeIcons.arrowRight),
+                          onPressed: () {
+                            if (controller.pointedAddress.value != null) {
+                              Get.back(result: controller.pointedAddress.value);
+                            }
+                          })
+                      : null,
                   border: OutlineInputBorder(
                       borderSide: const BorderSide(width: 0),
                       borderRadius: BorderRadius.circular(30)),
@@ -47,56 +51,42 @@ class GeoPage extends GetView<GeoController> {
                   labelText: "Address"),
               readOnly: true,
               controller: controller.addressTextController,
-              onTap: () => showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) => AddressSearchDialog(
-                    geoMethods: controller.geoMethods,
-                    onDone: (Address address) {
-                      if (address.coords != null) {
-                        _goToPoint(LatLng(address.coords!.latitude,
-                                address.coords!.longitude))
-                            .then((value) {
-                          controller.pointedAddress(address);
-                          controller.addressTextController.text = address
-                                  .reference ??
-                              "Unknown Place (${address.coords?.latitude}.${address.coords?.latitude})";
-                        });
-                      }
-                    }),
-              ),
+              onTap: enabled
+                  ? () => showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (BuildContext context) => AddressSearchDialog(
+                            geoMethods: controller.geoMethods,
+                            onDone: (Address address) {
+                              if (address.coords != null) {
+                                controller.pointedAddress(address);
+                              }
+                            }),
+                      )
+                  : null,
             ),
           )
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(FontAwesomeIcons.mapLocation),
-        onPressed: () async {
-          controller.determinePosition().then((value) {
-            return _goToPoint(LatLng(value.latitude, value.longitude))
-                .then((_) {
-              controller.geoMethods
-                  .geoLocatePlace(
-                      coords: Coords(value.latitude, value.longitude))
-                  .then((value2) {
-                controller.pointedAddress(value2);
-                controller.addressTextController.text = value2?.reference ??
-                    "Unknown Place (${value.latitude}.${value.longitude})";
-              }).onError((error, stackTrace) {
-                print(error);
-              });
-            });
-          }).onError((error, stackTrace) {
-            print(error);
-          });
-        },
-      ),
+      floatingActionButton: enabled
+          ? FloatingActionButton(
+              child: const Icon(FontAwesomeIcons.mapLocation),
+              onPressed: () async {
+                controller.determinePosition().then((value) {
+                  return controller.geoMethods
+                      .geoLocatePlace(
+                          coords: Coords(value.latitude, value.longitude))
+                      .then((value2) {
+                    controller.pointedAddress(value2);
+                  }).onError((error, stackTrace) {
+                    print(error);
+                  });
+                }).onError((error, stackTrace) {
+                  print(error);
+                });
+              },
+            )
+          : null,
     );
-  }
-
-  Future<void> _goToPoint(LatLng value) async {
-    await controller.googleMapController.animateCamera(
-        CameraUpdate.newCameraPosition(
-            CameraPosition(target: value, zoom: 15.0)));
   }
 }

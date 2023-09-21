@@ -10,7 +10,7 @@ class OrderPendingListModel {
   OrderPendingListModel({this.id, this.date, this.address, this.images});
 }
 
-class OrderPendingDetailModel {
+class OrderDetailModel {
   DateTime? date;
   Address? address;
   OrderCreateOptionModel option = OrderCreateOptionModel();
@@ -18,6 +18,6 @@ class OrderPendingDetailModel {
   int bonus = 0;
   List<String>? images;
 
-  OrderPendingDetailModel(
+  OrderDetailModel(
       {this.date, this.address, this.comments, this.bonus = 0, this.images});
 }
