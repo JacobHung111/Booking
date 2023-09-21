@@ -1,5 +1,4 @@
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -8,6 +7,7 @@ class ImagePickerController extends GetxController {
       <String, (String, bool)>{}.obs; // <fileName, (filePath, selected)>
   var imageListInList = RxList<(String, String, bool)>([]);
   final ImagePicker _picker = ImagePicker();
+  var isIOS = false;
 
   @override
   void onInit() {
@@ -31,13 +31,16 @@ class ImagePickerController extends GetxController {
   }
 
   openCamera() {
-    _picker.pickImage(source: ImageSource.camera).then((newImage) {
+    _picker
+        .pickImage(source: ImageSource.camera, imageQuality: 50)
+        .then((newImage) {
       if (newImage == null) return;
       imageList[newImage.name] = (newImage.path, true);
     });
   }
 
   openPhotoLib() {
+    //Maybe need to bugfix for real devices
     FilePicker.platform
         .pickFiles(
             type: FileType.image, allowMultiple: true, allowCompression: true)
@@ -45,10 +48,14 @@ class ImagePickerController extends GetxController {
       if (value != null) {
         for (var f in value.files) {
           if (f.path != null) {
-            var name = f.name.split("-");
-            name.removeLast();
-            var name2 = name.join();
-            imageList[name2] = (f.path!, true);
+            if (isIOS) {
+              var name = f.name.split("-");
+              name.removeLast();
+              var name2 = name.join();
+              imageList[name2] = (f.path!, true);
+            } else {
+              imageList[f.name] = (f.path!, true);
+            }
           }
         }
       }

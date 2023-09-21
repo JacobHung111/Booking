@@ -11,6 +11,7 @@ class ImagePickerPage extends GetView<ImagePickerController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.isIOS = Theme.of(context).platform == TargetPlatform.iOS;
     controller.layoutUpdate();
     return Scaffold(
       appBar: AppBar(
