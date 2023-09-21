@@ -32,8 +32,12 @@ class OrderDetailController extends GetxController {
         images: [
           "https://myaurochs.com/cdn/shop/articles/Is-Clear-a-Color_1024x.jpg",
           "https://ckhconsulting.com/wp-content/uploads/2021/07/pencil-test.jpeg",
-          "https://cdn.vox-cdn.com/thumbor/Mj73hFVZY3mDRFus8WsOhzmo77M=/0x0:2040x1360/2000x1333/filters:focal(1020x680:1021x681)/cdn.vox-cdn.com/uploads/chorus_asset/file/12795165/acastro_180905_1777_0001.jpg"
+          "https://cdn.vox-cdn.com/thumbor/Mj73hFVZY3mDRFus8WsOhzmo77M=/0x0:2040x1360/2000x1333/filters:focal(1020x680:1021x681)/cdn.vox-cdn.com/uploads/chorus_asset/file/12795165/acastro_180905_1777_0001.jpg",
+          "https://myaurochs.com/cdn/shop/articles/Is-Clear-a-Color_1024x.jpg",
+          "https://myaurochs.com/cdn/shop/articles/Is-Clear-a-Color_1024x.jpg",
+          "https://myaurochs.com/cdn/shop/articles/Is-Clear-a-Color_1024x.jpg",
         ]);
+    orderDetail?.option.grassCut = true;
   }
 
   updateUIFromDetail() {

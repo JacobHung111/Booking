@@ -2,6 +2,7 @@ import 'package:address_search_field/address_search_field.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../controllers/common/geo_controller.dart';
@@ -12,7 +13,7 @@ class GeoPage extends GetView<GeoController> {
 
   @override
   Widget build(BuildContext context) {
-    bool enabled = Get.arguments?['enable'] as bool? ?? true;
+    bool enabled = Get.arguments?['enabled'] as bool? ?? true;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Address"),
@@ -27,6 +28,10 @@ class GeoPage extends GetView<GeoController> {
               mapType: MapType.normal,
               onMapCreated: (GoogleMapController c) {
                 controller.googleMapController = c;
+                if (controller.waitForCamera != null) {
+                  controller.goToPoint(controller.waitForCamera!);
+                  controller.waitForCamera = null;
+                }
               },
               myLocationButtonEnabled: false)),
           Padding(
@@ -68,25 +73,32 @@ class GeoPage extends GetView<GeoController> {
           )
         ],
       ),
-      floatingActionButton: enabled
-          ? FloatingActionButton(
-              child: const Icon(FontAwesomeIcons.mapLocation),
-              onPressed: () async {
-                controller.determinePosition().then((value) {
-                  return controller.geoMethods
-                      .geoLocatePlace(
-                          coords: Coords(value.latitude, value.longitude))
-                      .then((value2) {
-                    controller.pointedAddress(value2);
-                  }).onError((error, stackTrace) {
-                    print(error);
-                  });
-                }).onError((error, stackTrace) {
-                  print(error);
-                });
-              },
-            )
-          : null,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(enabled
+            ? FontAwesomeIcons.locationCrosshairs
+            : FontAwesomeIcons.mapLocationDot),
+        onPressed: () async {
+          if (enabled) {
+            controller.determinePosition().then((value) {
+              return controller.geoMethods
+                  .geoLocatePlace(
+                      coords: Coords(value.latitude, value.longitude))
+                  .then((value2) {
+                controller.pointedAddress(value2);
+              }).onError((error, stackTrace) {
+                print(error);
+              });
+            }).onError((error, stackTrace) {
+              print(error);
+            });
+          } else if (controller.pointedAddress.value?.coords != null) {
+            var latlong = LatLng(
+                controller.pointedAddress.value!.coords!.latitude,
+                controller.pointedAddress.value!.coords!.longitude);
+            controller.goToPoint(latlong);
+          }
+        },
+      ),
     );
   }
 }

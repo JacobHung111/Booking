@@ -3,7 +3,6 @@ import 'package:booking/controllers/order/order_detail_controller.dart';
 import 'package:booking/models/order_pending_model.dart';
 import 'package:booking/views/dialogs/networkimage_hero.dart';
 import 'package:booking/views/pages/commons/geo_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -105,7 +104,7 @@ class OrderDetailPage extends GetView<OrderDetailController> {
                           Switch(
                               value: controller.orderDetail?.option.grassCut ??
                                   false,
-                              onChanged: null)
+                              onChanged: (_) {})
                         ],
                       )),
                       Flexible(

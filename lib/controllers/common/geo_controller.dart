@@ -22,6 +22,8 @@ class GeoController extends GetxController {
   Rx<Marker?> marker = Rx<Marker?>(null);
   Rx<bool> enable = true.obs;
 
+  LatLng? waitForCamera;
+
   Future<Position> determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -48,18 +50,22 @@ class GeoController extends GetxController {
   }
 
   final TextEditingController addressTextController = TextEditingController();
-  late final GoogleMapController googleMapController;
+  GoogleMapController? googleMapController;
 
-  Future<void> _goToPoint(LatLng value) async {
-    await googleMapController.animateCamera(CameraUpdate.newCameraPosition(
-        CameraPosition(target: value, zoom: 15.0)));
+  Future<void> goToPoint(LatLng value) async {
+    if (googleMapController != null) {
+      await googleMapController!.animateCamera(CameraUpdate.newCameraPosition(
+          CameraPosition(target: value, zoom: 15.0)));
+    } else {
+      waitForCamera = value;
+    }
   }
 
   @override
   void onInit() {
     ever(pointedAddress, (callback) {
       if (callback?.coords != null) {
-        _goToPoint(
+        goToPoint(
             LatLng(callback!.coords!.latitude, callback!.coords!.longitude));
         marker(Marker(
             markerId: const MarkerId("Address"),
@@ -75,7 +81,7 @@ class GeoController extends GetxController {
 
   @override
   void onClose() {
-    googleMapController.dispose();
+    googleMapController?.dispose();
     addressTextController.dispose();
     super.onClose();
   }
