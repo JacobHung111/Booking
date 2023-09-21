@@ -234,10 +234,7 @@ class OrderCreatePage extends GetView<OrderCreateController> {
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 1)
-                          // const SliverGridDelegateWithMaxCrossAxisExtent(
-                          //     maxCrossAxisExtent: 120),
-                          ));
+                                  crossAxisCount: 1)));
                 }),
                 TextField(
                   controller: controller.bonusController,

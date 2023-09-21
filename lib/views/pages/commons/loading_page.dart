@@ -1,4 +1,3 @@
-import 'package:booking/commons/widgets/scrollview.dart';
 import 'package:booking/controllers/common/loading_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +16,9 @@ class LoadingPage extends StatelessWidget {
             underLoading,
             if (controller.isLoading.value > 0)
               Container(
-                  height: double.infinity, color: Colors.black.withOpacity(0.5))
+                  height: double.infinity,
+                  color: Colors.black.withOpacity(0.5),
+                  child: const Center(child: CircularProgressIndicator()))
           ])),
     ));
   }

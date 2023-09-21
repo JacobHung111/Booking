@@ -113,10 +113,15 @@ class OrderCreateController extends GetxController {
   @override
   onInit() {
     super.onInit();
+    if (orderDetail.value.date != null) {
+      dateTimeController.text = formatter.format(orderDetail.value.date!);
+    }
+    addressController.text = orderDetail.value.address?.reference ?? "";
     noOfRoomController.text = '${orderDetail.value.option.rooms}';
     noOfOvenController.text = '${orderDetail.value.option.ovenToClean}';
     noOfToiletController.text = '${orderDetail.value.option.toilets}';
     bonusController.text = sprintf("%.2f", [orderDetail.value.bonus / 100]);
+    commentController.text = orderDetail.value.comments ?? "";
   }
 
   createOnClicked() {

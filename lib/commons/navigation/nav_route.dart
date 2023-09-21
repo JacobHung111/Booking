@@ -1,5 +1,6 @@
 import 'package:booking/controllers/common/geo_controller.dart';
 import 'package:booking/controllers/common/image_picker_controller.dart';
+import 'package:booking/controllers/order/order_pending_controller.dart';
 import 'package:booking/views/pages/commons/geo_page.dart';
 import 'package:booking/views/pages/commons/image_picker_page.dart';
 import 'package:get/get.dart';
@@ -35,6 +36,9 @@ class NavigationRoute {
         page: () => TabBarPage(),
         binding: BindingsBuilder(() {
           Get.lazyPut(() => TabbarController());
+          Get.lazyPut(() => OrderPendingController());
+          // Get.lazyPut(() => TabbarController());
+          // Get.lazyPut(() => TabbarController());
         }),
         transition: Transition.noTransition,
         fullscreenDialog: true),
